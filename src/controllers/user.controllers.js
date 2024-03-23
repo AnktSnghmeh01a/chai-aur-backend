@@ -1,7 +1,7 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiErrors.js";
 import { User } from "../models/user.model.js";
-import { UploadApiErrorResponse, uploadOnCloudnary } from "../utils/cloudnary.js";
+import { uploadOnCloudnary } from "../utils/cloudnary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 
 
@@ -25,7 +25,7 @@ export const registerUser = asyncHandler(async (req, res) => {
     throw new ApiError(400, "All filds are required");
   }
 
-  const existedUser = User.findOne({
+  const existedUser = await User.findOne({
     $or: [{ username }, { email }],
   });
 

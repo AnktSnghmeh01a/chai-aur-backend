@@ -5,7 +5,7 @@ const router = Router()
 
 router.route("/register").post(
   
-  upload.field([
+  upload.fields([
 
       {
         name:"avatar",
@@ -19,7 +19,6 @@ router.route("/register").post(
 
 
   ])
-  
   
   
   ,registerUser);
